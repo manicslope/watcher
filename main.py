@@ -5,7 +5,9 @@ from datetime import datetime
 
 import requests
 
-logging.basicConfig(format='%(asctime)s [%(levelname)-2s] %(message)s', level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(format='%(asctime)s [%(levelname)-2s] %(message)s',
+                    level=logging.INFO,
+                    datefmt='%Y-%m-%d %H:%M:%S')
 
 camera_address = os.environ['camera_address']
 capture_url = 'http://' + '/'.join([camera_address, 'capture'])
