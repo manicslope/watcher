@@ -4,6 +4,7 @@ import time
 from datetime import datetime
 
 import requests
+from PIL import Image
 
 logging.basicConfig(format='%(asctime)s [%(levelname)-2s] %(message)s',
                     level=logging.INFO,
@@ -22,8 +23,11 @@ def take_current_picture(filename):
 
 def watch():
     while True:
-        logging.info("Taking picture...")
-        take_current_picture(datetime.today().strftime(time_format) + '.jpg')
+        filename = datetime.today().strftime(time_format) + '.jpg'
+        take_current_picture(filename)
+        with Image.open(filename) as image:
+            width, height = image.size
+        logging.info(f"Taking picture {width}x{height}...")
         time.sleep(timeout)
 
 
